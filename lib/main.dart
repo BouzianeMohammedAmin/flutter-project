@@ -1,4 +1,4 @@
-import 'file:///D:/DevAndroid/first_project/ios/onbording.dart';
+import 'onbording.dart';
 import 'package:flutter/material.dart';
 
 void main() {
