@@ -1,7 +1,9 @@
 import 'package:first_project/pagemodel.dart';
+import 'package:first_project/screens/home_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:page_view_indicator/page_view_indicator.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class OnBoarding extends StatefulWidget {
   @override
@@ -76,8 +78,7 @@ class _OnBoardingState extends State<OnBoarding> {
           },
           itemCount: this.pages.length,
           onPageChanged: (index) {
-
-            _pageViewNotify.value=index;
+            _pageViewNotify.value = index;
             /*    setState(() {
               int k;
               _mapColorsIndicateur.forEach((key, value) {
@@ -103,7 +104,18 @@ class _OnBoardingState extends State<OnBoarding> {
                     color: Colors.white,
                   ),
                 ),
-                onPressed: () {},
+                onPressed: ()async {
+                  //TODO Update Seen
+                  SharedPreferences prefs = await SharedPreferences.getInstance();
+                  prefs.setBool('seen', true);
+
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context)=>HomeScreen(),
+                    ),
+                  );
+                },
               ),
             ),
           ),
@@ -111,9 +123,9 @@ class _OnBoardingState extends State<OnBoarding> {
         Transform.translate(
           child: Align(
             child: _displayPpageIndicateur(pages.length),
-          alignment: Alignment.bottomCenter,
+            alignment: Alignment.bottomCenter,
           ),
-          offset: Offset(0,-100),
+          offset: Offset(0, -100),
         ),
 
         /*

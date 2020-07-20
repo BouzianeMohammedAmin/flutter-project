@@ -1,29 +1,30 @@
-import 'onbording.dart';
+import 'package:first_project/screens/onbording.dart';
 import 'package:flutter/material.dart';
+import 'screens/home_screen.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-void main() {
-  runApp(MyApp());
+main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  bool seen = prefs.getBool( 'seen' )?? false ;
+  Widget _screen;
+  if( seen == false ){
+    _screen = OnBoarding();
+  }else{
+    _screen = HomeScreen();
+  }
+  runApp( NewsApp( _screen ) );
 }
 
-class MyApp extends StatelessWidget {
+class NewsApp extends StatelessWidget {
+  final Widget _screen;
+  NewsApp(this._screen);
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.teal,
-      ),
-      debugShowCheckedModeBanner: false ,
-      home: MyHomePage(),
+      debugShowCheckedModeBanner: false,
+      home: this._screen,
     );
   }
 }
-
-class MyHomePage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return OnBoarding();
-  }
-}
-
-
