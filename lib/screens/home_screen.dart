@@ -42,7 +42,7 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
       ),
       body: Center(
         child:TabBarView(children: [
-          WhatsNaw(),
+          WhatsNew(),
           Popular(),
           Favotites(),
         ],
