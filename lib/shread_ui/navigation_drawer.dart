@@ -1,6 +1,7 @@
 import 'package:first_project/models/nav_menu.dart';
 import 'package:first_project/screens/head_line_news.dart';
 import 'package:first_project/screens/home_screen.dart';
+import 'package:first_project/screens/twiter_feed.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/material.dart';
 
@@ -13,6 +14,8 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
   List<NavMenuItem> navMenu = [
     NavMenuItem("Explore", () => HomeScreen()),
     NavMenuItem("Head Line News", () => HeadLineNews()),
+    NavMenuItem("TWITTER FEED", () => TwitterFeed()),
+
   ];
 
   @override
@@ -33,6 +36,7 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
               Icons.chevron_right,
             ),
             onTap: () {
+              Navigator.pop(context);
               Navigator.push(context, MaterialPageRoute(builder: (context) {
                 return navMenu[position].destination();
               }));

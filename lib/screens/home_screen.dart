@@ -9,15 +9,24 @@ class HomeScreen extends StatefulWidget {
   _HomeScreenState createState() => _HomeScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateMixin {
- TabController _tabController ;
+class _HomeScreenState extends State<HomeScreen>
+    with SingleTickerProviderStateMixin {
+  TabController _tabController;
 
- @override
+  @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    _tabController = TabController( initialIndex: 0, length: 3, vsync: this);
+    _tabController = TabController(initialIndex: 0, length: 3, vsync: this);
   }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    this._tabController.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,28 +34,34 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
         title: Text('Explore'),
         centerTitle: false,
         actions: <Widget>[
-          IconButton(icon: Icon(Icons.search ), onPressed: (){
-
-          }),
-          IconButton(icon: Icon(Icons.more_vert ), onPressed: (){
-
-          }),
+          IconButton(icon: Icon(Icons.search), onPressed: () {}),
+          IconButton(icon: Icon(Icons.more_vert), onPressed: () {}),
         ],
-        bottom: TabBar(tabs: [
-          Tab(text: "WHAT'S NEW",),
-          Tab(text: "POPULAR",),
-          Tab(text: "FAVORITES",),
-        ] ,
-        indicatorColor: Colors.white,
-        controller: _tabController,),
+        bottom: TabBar(
+          tabs: [
+            Tab(
+              text: "WHAT'S NEW",
+            ),
+            Tab(
+              text: "POPULAR",
+            ),
+            Tab(
+              text: "FAVORITES",
+            ),
+          ],
+          indicatorColor: Colors.white,
+          controller: _tabController,
+        ),
       ),
       body: Center(
-        child:TabBarView(children: [
-          WhatsNew(),
-          Popular(),
-          Favotites(),
-        ],
-        controller: _tabController,),
+        child: TabBarView(
+          children: [
+            WhatsNew(),
+            Popular(),
+            Favotites(),
+          ],
+          controller: _tabController,
+        ),
       ),
       drawer: NavigationDrawer(),
     );

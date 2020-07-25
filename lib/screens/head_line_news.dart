@@ -1,4 +1,3 @@
-
 import 'package:first_project/screens/home_tabs/favorites.dart';
 import 'package:first_project/shread_ui/navigation_drawer.dart';
 import 'package:flutter/material.dart';
@@ -10,14 +9,21 @@ class HeadLineNews extends StatefulWidget {
   _HeadLineNewsState createState() => _HeadLineNewsState();
 }
 
-class _HeadLineNewsState extends State<HeadLineNews> with TickerProviderStateMixin {
-
+class _HeadLineNewsState extends State<HeadLineNews>
+    with TickerProviderStateMixin {
   TabController _tabController;
 
   @override
   void initState() {
     super.initState();
     _tabController = TabController(initialIndex: 0, length: 3, vsync: this);
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    this._tabController.dispose();
   }
 
   @override
@@ -48,11 +54,14 @@ class _HeadLineNewsState extends State<HeadLineNews> with TickerProviderStateMix
       ),
       drawer: NavigationDrawer(),
       body: Center(
-        child: TabBarView( children: [
-          Favotites(),
-          Popular(),
-          Favotites(),
-        ] , controller: _tabController,  ),
+        child: TabBarView(
+          children: [
+            Favotites(),
+            Popular(),
+            Favotites(),
+          ],
+          controller: _tabController,
+        ),
       ),
     );
   }
