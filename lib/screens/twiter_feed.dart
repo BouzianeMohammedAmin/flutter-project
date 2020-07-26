@@ -19,8 +19,10 @@ class _TwitterFeedState extends State<TwitterFeed> {
       ),
       drawer: NavigationDrawer(),
       body: ListView.builder(
+        padding: EdgeInsets.all(10),
         itemBuilder: (context, position) {
           return Card(
+            elevation: 7,
             child: Column(
               children: <Widget>[
                 _cardHeader(),
@@ -51,14 +53,30 @@ class _TwitterFeedState extends State<TwitterFeed> {
           children: <Widget>[
             Row(
               children: <Widget>[
-                Text('Christina Meyers'),
-                Text('@ch_meyers'),
+                Text(
+                  'Christina Meyers',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 16,
+                  ),
+                ),
+                SizedBox(
+                  width: 4,
+                ),
+                Text(
+                  '@ch_meyers',
+                  style: TextStyle(color: Colors.black45),
+                ),
               ],
             ),
             SizedBox(
               height: 8,
             ),
-            Text('Fri, 12 May 2017 • 14.30'),
+            Text(
+              'Fri, 12 May 2017 • 14.30',
+              style: TextStyle(color: Colors.black45),
+
+            ),
           ],
         ),
       ],
