@@ -1,6 +1,8 @@
 import 'package:first_project/models/nav_menu.dart';
+import 'package:first_project/screens/facebook_feed.dart';
 import 'package:first_project/screens/head_line_news.dart';
 import 'package:first_project/screens/home_screen.dart';
+import 'package:first_project/screens/instagram_feed.dart';
 import 'package:first_project/screens/twiter_feed.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/material.dart';
@@ -15,6 +17,9 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
     NavMenuItem("Explore", () => HomeScreen()),
     NavMenuItem("Head Line News", () => HeadLineNews()),
     NavMenuItem("TWITTER FEED", () => TwitterFeed()),
+    NavMenuItem("INSTAGRAM FEED", () => InstagramFeed()),
+    NavMenuItem("FACEBOOK FEED", () => FacebookFeeds()),
+
 
   ];
 
